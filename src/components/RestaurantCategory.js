@@ -13,7 +13,7 @@ const RestaurantCategory = ({category,showItems,clickItem}) => {
             <h2>{title} ({category.itemCards.length})</h2>
             <span>Down</span>
         </div>
-        {showItems && <ItemList data={category.itemCards}/>}
+        {showItems && <ItemList data={category.itemCards} key={category.title}/>}
        
     </div>
   )

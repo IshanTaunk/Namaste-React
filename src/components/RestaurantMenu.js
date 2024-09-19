@@ -15,7 +15,7 @@ const RestaurantMenu = () => {
   const recommendedCard = resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.find(el=>{return el.card.card?.title =="Recommended"});
   const {itemCards} = recommendedCard? (recommendedCard?.card?.card):{itemCards:[]};
   const categories = resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((el)=>{return el.card.card?.["@type"] =="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"});
-  console.log(categories,"catt");
+  //console.log(categories,"catt");
 
   return (
     <div className='text-center'>

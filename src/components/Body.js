@@ -54,18 +54,27 @@ const Body = ()=>{
     if(isOnline==false){
         return <div>You're offline. Please check your internet connection.</div>
     }
-
+    //console.log(filteredRes[0],"xxx");
     return list.length===0?<Shimmer/>:(
     <div className="body">
-        <div className="search">
+        <div className="search m-4 p-4 flex items-center">
             <div>
-                <input type="text" className="search-box" value={searchText} onChange={searchRestaurant}></input>
-                <button onClick={clickSearch}>Search</button>
+                <input 
+                    type="text" 
+                    className="border border-solid border-black" 
+                    value={searchText} 
+                    onChange={searchRestaurant}
+                    data-testid="search-input"></input>
+                <button onClick={clickSearch} className="px-4 py-2 bg-green-100 m-4 rounded-lg">Search</button>
             </div>
-            <button className="search-btn" onClick={filterTopRestaurants}>Top rated restaurants</button>
-            <div><input value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}></input></div>
+            <div>
+                <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={filterTopRestaurants}>Top rated restaurants</button>
+            </div>
+            <div>
+                <input className="border border-solid border-black" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}></input>
+            </div>
         </div>
-        <div className="restaurant-body">
+        <div className="flex flex-wrap">
             {filteredRes.map(resObj=>(
                 <Link to={"/restaurant/"+resObj.info.id} key={resObj.info.id}>
                     {resObj.info?.aggregatedDiscountInfoV3?.header?<DiscountedResCard resData={resObj}/>:<RestaurantCard resData={resObj}/>}
